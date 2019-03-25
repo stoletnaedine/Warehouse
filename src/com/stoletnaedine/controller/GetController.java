@@ -1,14 +1,19 @@
 package com.stoletnaedine.controller;
 
+import com.stoletnaedine.model.Article;
 import com.stoletnaedine.model.Storage;
 
 import java.awt.*;
-import java.model.Article;
 
 public class GetController {
 
-	public void getArticle(Storage storage, Point point, Article article) {
+	public Storage getArticle(Storage storage, Point point, Article article) {
 
+		if (storage.getArticle(point) != null) {
+			return storage.getArticle(point);
+		}
+
+		return null;
 	}
 
 }
