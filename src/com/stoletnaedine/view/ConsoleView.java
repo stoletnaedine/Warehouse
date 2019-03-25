@@ -9,12 +9,24 @@ import java.awt.*;
 
 public class ConsoleView {
 
+//	private int askCoordinate(final String coordinateName) {
+//		System.out.format("Please input %s:", coordinateName);
+//		final Scanner in = new Scanner(System.in);
+//		try {
+//			return in.nextInt();
+//		} catch (final InputMismatchException e) {
+//			System.out.println("0_0 olololo!!!!!");
+//			return askCoordinate(coordinateName);
+//		}
+//	}
+
 	public void show(Session session) {
 
 		System.out.format("Warehouse name: %s\n", session.getName());
 		final Storage storage = session.getStorage();
 		for (int x = 0; x < storage.getX(); x++) {
-			if (x != 0)
+			//if (x != 0)
+
 				printSeparator();
 			printLine(storage, x);
 		}
@@ -36,7 +48,7 @@ public class ConsoleView {
 	}
 
 	private void printSeparator() {
-		System.out.println("~~~~~~~~~~~");
+		System.out.println("--------------------");
 	}
 
 }

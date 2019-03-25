@@ -31,7 +31,6 @@ public class Storage {
 		storage[point.x][point.y] = article;
 	}
 
-
 	public int getX() {
 		return sizeX;
 	}
@@ -39,4 +38,5 @@ public class Storage {
 	public int getY() {
 		return sizeY;
 	}
+
 }
