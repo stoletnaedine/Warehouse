@@ -13,7 +13,7 @@ public class SetController {
 						   final Article article) throws OccupiedException {
 
 		if (storage.getArticle(point) != null) {
-			throw OccupiedException;
+			//throw OccupiedException;
 		}
 
 		storage.setArticle(point, article);

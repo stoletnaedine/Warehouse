@@ -9,31 +9,34 @@ public class Storage {
 
 	private int sizeY;
 
-	private final Storage[][] storage;
+	private final Article[][] storage;
 
-	public Storage(int sizeX, int sizeY, Storage[][] storage) {
+	private Point point;
+
+	public Storage(int sizeX, int sizeY) {
 		this.sizeX = sizeX;
 		this.sizeY = sizeY;
-		this.storage = storage;
+		storage = new Article[sizeX][sizeY];
 	}
 
 	public int getSize() {
-
 		return sizeX * sizeY;
 	}
 
-	public Article getArticle(Storage storage, Point point) {
-
+	public Article getArticle(final Point point) {
 		return storage[point.x][point.y];
-
 	}
 
-	public void setArticle(Storage storage, Point point, Article article) {
-
+	public void setArticle(Point point, Article article) {
 		storage[point.x][point.y] = article;
-
 	}
 
 
+	public int getX() {
+		return sizeX;
+	}
 
+	public int getY() {
+		return sizeY;
+	}
 }

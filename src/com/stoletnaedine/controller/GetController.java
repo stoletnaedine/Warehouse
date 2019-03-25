@@ -7,7 +7,7 @@ import java.awt.*;
 
 public class GetController {
 
-	public Storage getArticle(Storage storage, Point point, Article article) {
+	public Article getArticle(Storage storage, Point point, Article article) {
 
 		if (storage.getArticle(point) != null) {
 			return storage.getArticle(point);
