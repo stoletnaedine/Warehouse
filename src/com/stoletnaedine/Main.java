@@ -11,17 +11,21 @@ public class Main {
 
     public static void main(String[] args) {
 
-        Storage storage = new Storage(7,3);
 
-        Article a1 = new Article(12, "iPhone");
+        final ConsoleView cv = new ConsoleView();
 
-        Article a2 = new Article(15, "iPad");
+        int Y = cv.askCoordinate("X");
+        int X = cv.askCoordinate("Y");
 
-        storage.setArticle (new Point(6,3), a1);
+        Storage storage = new Storage(X, Y);
+
+//        Article a1 = new Article(12, "iPhone");
+//        Article a2 = new Article(15, "iPad");
+
+       // storage.setArticle (new Point(2,10), a1);
 
         final Session session = new Session(storage, "My Backyard");
 
-        final ConsoleView cv = new ConsoleView();
         cv.show(session);
 
     }

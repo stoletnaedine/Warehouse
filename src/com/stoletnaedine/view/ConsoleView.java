@@ -5,34 +5,36 @@ import com.stoletnaedine.model.Session;
 import com.stoletnaedine.model.Storage;
 
 import java.awt.*;
+import java.util.InputMismatchException;
+import java.util.Scanner;
 
 public class ConsoleView {
 
-//	private int askCoordinate(final String coordinateName) {
-//		System.out.format("Please input %s:", coordinateName);
-//		final Scanner in = new Scanner(System.in);
-//		try {
-//			return in.nextInt();
-//		} catch (final InputMismatchException e) {
-//			System.out.println("0_0 olololo!!!!!");
-//			return askCoordinate(coordinateName);
-//		}
-//	}
+    public int askCoordinate(final String coordinateName) {
+		System.out.format("Please input %s:", coordinateName);
+		final Scanner in = new Scanner(System.in);
+		try {
+			return in.nextInt();
+		} catch (final InputMismatchException e) {
+			System.out.println("Wrong input!");
+			return askCoordinate(coordinateName);
+		}
+	}
 
 	public void show(final Session session) {
 
 		System.out.format("Warehouse name: %s\n", session.getName());
 		final Storage storage = session.getStorage();
 		for (int x = 0; x < storage.getX(); x++) {
-			//if (x != 0)
 
-			for (int i = 0; i < storage.getY() * 4; i++)
+			for (int i = 0; i < storage.getY() * 4 + 1; i++)
 			    printSeparator();
 
             System.out.println();
 			printLine(storage, x);
 		}
-        for (int i = 0; i < storage.getY() * 4; i++)
+
+        for (int i = 0; i < storage.getY() * 4 + 1; i++)
             printSeparator();
 	}
 
