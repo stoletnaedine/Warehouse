@@ -8,9 +8,11 @@ TODO:
 2. add setter for article on cell (on CLI) — DONE
 3. add search article 
 4. add defragmentation articles
-5. refactoring controller
+5. refactoring controller — DONE
 6. add tests
+7. add random fill cells — DONE
+8. add command 'all' for show list of all articles with fields
 
 future:
-1. use database
+1. use SQL database
 2. use web interface
