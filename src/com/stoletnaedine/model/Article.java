@@ -6,6 +6,11 @@ public class Article {
 
 	private String title;
 
+	public Article() {
+		this.id = 0;
+		this.title = "default";
+	}
+
 	public Article(int id, String title) {
 		this.id = id;
 		this.title = title;

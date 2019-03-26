@@ -9,51 +9,29 @@ import java.util.Scanner;
 
 public class ConsoleView {
 
-	public String askInput(final String inputName) {
-		System.out.format("Please input %s:", inputName);
-		final Scanner in = new Scanner(System.in);
-		try {
-			return in.nextLine();
-		} catch (final InputMismatchException e) {
-			System.out.println("Wrong input!");
-			return askInput(inputName);
-		}
-	}
-
 	public Point askPoint() {
-		return new Point(askCoordinate("X"), askCoordinate("Y"));
+		return new Point(askInt("X"), askInt("Y"));
 	}
 
-    public int askCoordinate(final String coordinateName) {
-		System.out.format("Please input %s:", coordinateName);
-		final Scanner in = new Scanner(System.in);
-		try {
-			return in.nextInt();
-		} catch (final InputMismatchException e) {
-			System.out.println("Wrong input!");
-			return askCoordinate(coordinateName);
-		}
-	}
-
-    public int askIdArticle(final String coordinateName) {
+    public int askInt(final String coordinateName) {
         System.out.format("Please input %s:", coordinateName);
         final Scanner in = new Scanner(System.in);
         try {
             return in.nextInt();
         } catch (final InputMismatchException e) {
             System.out.println("Wrong input!");
-            return askCoordinate(coordinateName);
+            return askInt(coordinateName);
         }
     }
 
-    public String askTitleArticle(final String inputName) {
+    public String askString(final String inputName) {
         System.out.format("Please input %s:", inputName);
         final Scanner in = new Scanner(System.in);
         try {
             return in.nextLine();
         } catch (final InputMismatchException e) {
             System.out.println("Wrong input!");
-            return askInput(inputName);
+            return askString(inputName);
         }
     }
 
@@ -61,6 +39,7 @@ public class ConsoleView {
 		System.out.println("help — all comands");
         System.out.println("set - put the item in the box");
 		System.out.println("show - render warehouse");
+		System.out.println("random - fill N cells");
 		System.out.println("quit — close the app");
 	}
 

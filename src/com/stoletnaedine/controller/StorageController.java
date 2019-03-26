@@ -10,35 +10,36 @@ import java.awt.*;
 
 public class StorageController {
 
-    public boolean checkCoorinate(final Storage storage, final Point point){
+    public static boolean checkCoorinate(final Storage storage, final Point point){
         return point.x >= 0 && point.x <= storage.getX()
                 && point.y >= 0 && point.y <= storage.getY();
     }
 
-    public boolean checkNoPlaceStorage(final Storage storage) {
-        return sc.counterOccupiedCells(storage) < storage.getSize();
+    public static boolean checkNoPlaceStorage(final Storage storage) {
+        return counterOccupiedCells(storage) == storage.getSize();
     }
 
-    public void randomFillCells(final Storage storage, final int n) {
-        StorageController sc = new StorageController();
-        Article article = new Article();
+    public static void randomFillCells(final Storage storage, final int n) throws OccupiedException, InvalidPointException {
+        int begin = 1;
+        int endX = storage.getX();
+        int endY = storage.getY();
         do {
-            sc.setArticle(storage, new Point(Math.random() * 10, Math.random() * 10), article);
-        } while (sc.counterOccupiedCells(storage) < n)
+            setArticle(storage, new Point(begin + (int) (Math.random() * endX), begin + (int) (Math.random() * endY)), new Article());
+        } while (counterOccupiedCells(storage) < n);
     }
 
-    private int counterOccupiedCells(Storage storage) {
+    private static int counterOccupiedCells(final Storage storage) {
         int counter = 0;
 
         for (int i = 1; i <= storage.getX(); i++)
             for (int i2 = 1; i2 <= storage.getY(); i2++)
-                if (new Point(i, i2) != null) {
+                if (storage.getArticle(new Point(i, i2)) != null) {
                     counter += 1;
                 }
         return counter;
     }
 
-    public void setArticle(final Storage storage, final Point point, final Article article)
+    public static void setArticle(final Storage storage, final Point point, final Article article)
             throws InvalidPointException, OccupiedException{
         if (!checkCoorinate(storage, point)) {
             throw new InvalidPointException();

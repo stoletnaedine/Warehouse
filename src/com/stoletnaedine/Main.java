@@ -14,24 +14,24 @@ import java.util.Scanner;
 
 public class Main {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws OccupiedException, InvalidPointException {
 
         boolean quit = false;
 
         final ConsoleView cv = new ConsoleView();
-        final StorageController sc = new StorageController();
+        //final StorageController sc = new StorageController();
 
-        String nameOfWarehouse = cv.askInput("name of warehouse");
+        String nameOfWarehouse = cv.askString("name of warehouse");
 
         System.out.println("Ok, please input size of warehouse:");
-        int Y = cv.askCoordinate("X");
-        int X = cv.askCoordinate("Y");
+        int Y = cv.askInt("X");
+        int X = cv.askInt("Y");
         Storage storage = new Storage(X, Y);
 
         Session session = new Session(storage, nameOfWarehouse);
 
         while (!quit) {
-            String command = cv.askInput("command or help");
+            String command = cv.askString("command or help");
             switch (command) {
                 case "help":
                     cv.help();
@@ -41,17 +41,21 @@ public class Main {
                     cv.show(session);
                     break;
 
+                case "random":
+                    int n = cv.askInt("number of cells?");
+                    StorageController.randomFillCells(storage, n);
+                    break;
+
                 case "set":
                     System.out.println("Please input article:");
-                    int id = cv.askIdArticle("Id");
-                    String title = cv.askTitleArticle("Title");
+                    int id = cv.askInt("Id");
+                    String title = cv.askString("Title");
                     Article article = new Article(id, title);
 
                     System.out.println("Where to put?");
-
                     final Point point = cv.askPoint();
                     try {
-                        sc.setArticle(storage, point, article);
+                        StorageController.setArticle(storage, point, article);
                     } catch (final InvalidPointException | OccupiedException e){}
                     break;
 
