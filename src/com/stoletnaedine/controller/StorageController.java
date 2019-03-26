@@ -10,22 +10,37 @@ import java.awt.*;
 
 public class StorageController {
 
-    public static boolean checkCoorinate(final Storage storage, final Point point){
-        return point.x >= 0 && point.x <= storage.getX()
-                && point.y >= 0 && point.y <= storage.getY();
+    private static boolean checkCoorinate(final Storage storage, final Point point){
+        return point.x > 0 && point.x <= storage.getX()
+                && point.y > 0 && point.y <= storage.getY();
     }
 
     public static boolean checkNoPlaceStorage(final Storage storage) {
         return counterOccupiedCells(storage) == storage.getSize();
     }
 
-    public static void randomFillCells(final Storage storage, final int n) throws OccupiedException, InvalidPointException {
-        int begin = 1;
-        int endX = storage.getX();
-        int endY = storage.getY();
+    public static void randomFillCells(final Storage storage, int n) throws OccupiedException, InvalidPointException {
+        if (n > storage.getSize())
+            n = storage.getSize();
         do {
-            setArticle(storage, new Point(begin + (int) (Math.random() * endX), begin + (int) (Math.random() * endY)), new Article());
+            setArticle(storage, getNullPoint(storage), new Article());
         } while (counterOccupiedCells(storage) < n);
+    }
+
+    private static Point getNullPoint(final Storage storage){
+        Point result = getRandomPoint(storage);
+        while (storage.getArticle(result) != null) {
+            result = getRandomPoint(storage);
+        }
+        return result;
+    }
+
+    private static Point getRandomPoint(final Storage storage){
+        return new Point(getRandomInt(storage.getX()), getRandomInt(storage.getY()));
+    }
+
+    private static int getRandomInt(final int endCoordinate){
+        return 1 + (int) (Math.random() * endCoordinate);
     }
 
     private static int counterOccupiedCells(final Storage storage) {
@@ -40,7 +55,7 @@ public class StorageController {
     }
 
     public static void setArticle(final Storage storage, final Point point, final Article article)
-            throws InvalidPointException, OccupiedException{
+            throws InvalidPointException, OccupiedException {
         if (!checkCoorinate(storage, point)) {
             throw new InvalidPointException();
         }
@@ -48,6 +63,17 @@ public class StorageController {
             throw new OccupiedException();
         }
         storage.setArticle(point, article);
+    }
+
+    public static Article getArticle(final Storage storage, final Point point)
+            throws InvalidPointException, OccupiedException {
+        if (!checkCoorinate(storage, point)) {
+            throw new InvalidPointException();
+        }
+        if (storage.getArticle(point) != null) {
+            throw new OccupiedException();
+        }
+        return storage.getArticle(point);
     }
 
 }

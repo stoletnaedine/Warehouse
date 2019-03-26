@@ -11,8 +11,6 @@ public class Storage {
 
 	private final Article[][] storage;
 
-	private Point point;
-
 	public Storage(int sizeX, int sizeY) {
 		this.sizeX = sizeX;
 		this.sizeY = sizeY;

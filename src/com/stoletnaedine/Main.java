@@ -12,6 +12,8 @@ import java.awt.*;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
+import static com.stoletnaedine.controller.StorageController.setArticle;
+
 public class Main {
 
     public static void main(String[] args) throws OccupiedException, InvalidPointException {
@@ -19,7 +21,6 @@ public class Main {
         boolean quit = false;
 
         final ConsoleView cv = new ConsoleView();
-        //final StorageController sc = new StorageController();
 
         String nameOfWarehouse = cv.askString("name of warehouse");
 
@@ -42,20 +43,20 @@ public class Main {
                     break;
 
                 case "random":
-                    int n = cv.askInt("number of cells?");
+                    int n = cv.askInt("Number of cells?");
                     StorageController.randomFillCells(storage, n);
                     break;
 
                 case "set":
                     System.out.println("Please input article:");
-                    int id = cv.askInt("Id");
-                    String title = cv.askString("Title");
+                    int id = cv.askInt("Id?");
+                    String title = cv.askString("Title?");
                     Article article = new Article(id, title);
 
                     System.out.println("Where to put?");
                     final Point point = cv.askPoint();
                     try {
-                        StorageController.setArticle(storage, point, article);
+                        setArticle(storage, point, article);
                     } catch (final InvalidPointException | OccupiedException e){}
                     break;
 
@@ -64,7 +65,7 @@ public class Main {
                     break;
 
                 default:
-                    System.out.println("Wrong input!");
+                    System.out.println("ERROR: incorrect command!");
                     break;
             }
         }
