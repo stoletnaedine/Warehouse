@@ -13,22 +13,32 @@ public class Main {
 
     public static void main(String[] args) {
 
-        final ConsoleView cv = new ConsoleView();
-
         boolean quit = false;
 
+
+
+            final ConsoleView cv = new ConsoleView();
+
+            String nameOfWarehouse = cv.askInput("name of warehouse");
+
+            System.out.println("Ok, please input size of warehouse:");
+                int Y = cv.askCoordinate("X");
+                int X = cv.askCoordinate("Y");
+                Storage storage = new Storage(X, Y);
+
+            Session session = new Session(storage, nameOfWarehouse);
+
         while (!quit) {
-            String command = cv.askInput("Command or help");
+
+            String command = cv.askInput("command or help");
 
             switch (command) {
                 case "help":
                     cv.help();
                     break;
 
-                case "size":
-                    int Y = cv.askCoordinate("X");
-                    int X = cv.askCoordinate("Y");
-                    Storage storage = new Storage(X, Y);
+                case "show":
+                    cv.show(session);
                     break;
 
                 case "quit":
@@ -41,14 +51,6 @@ public class Main {
             }
         }
 
-//        Article a1 = new Article(12, "iPhone");
-//        Article a2 = new Article(15, "iPad");
-
-       // storage.setArticle (new Point(2,10), a1);
-
-        //final Session session = new Session(storage, "My MindBox");
-
-        //cv.show(session);
 
     }
 }

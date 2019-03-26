@@ -51,6 +51,7 @@ public class ConsoleView {
 
         for (int i = 0; i < storage.getY() * 4 + 1; i++)
             printSeparator();
+        System.out.println();
 	}
 
 	private void printLine(final Storage storage,
