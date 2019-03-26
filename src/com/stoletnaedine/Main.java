@@ -15,21 +15,19 @@ public class Main {
 
         boolean quit = false;
 
-            final ConsoleView cv = new ConsoleView();
+        final ConsoleView cv = new ConsoleView();
 
-            String nameOfWarehouse = cv.askInput("name of warehouse");
+        String nameOfWarehouse = cv.askInput("name of warehouse");
 
-            System.out.println("Ok, please input size of warehouse:");
-                int Y = cv.askCoordinate("X");
-                int X = cv.askCoordinate("Y");
-                Storage storage = new Storage(X, Y);
+        System.out.println("Ok, please input size of warehouse:");
+        int Y = cv.askCoordinate("X");
+        int X = cv.askCoordinate("Y");
+        Storage storage = new Storage(X, Y);
 
-            Session session = new Session(storage, nameOfWarehouse);
+        Session session = new Session(storage, nameOfWarehouse);
 
         while (!quit) {
-
             String command = cv.askInput("command or help");
-
             switch (command) {
                 case "help":
                     cv.help();
@@ -37,6 +35,17 @@ public class Main {
 
                 case "show":
                     cv.show(session);
+                    break;
+
+                case "set":
+                    System.out.println("Please input article:");
+                    int id = cv.askIdArticle("Id");
+                    String title = cv.askTitleArticle("Title");
+                    Article article = new Article(id, title);
+                    System.out.println("Where set:");
+                    int Y_Article = cv.askCoordinate("X");
+                    int X_Article = cv.askCoordinate("Y");
+                    storage.setArticle(new Point(X_Article, Y_Article), article);
                     break;
 
                 case "quit":
