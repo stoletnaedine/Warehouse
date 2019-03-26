@@ -1,6 +1,5 @@
 package com.stoletnaedine.view;
 
-import com.stoletnaedine.model.Article;
 import com.stoletnaedine.model.Session;
 import com.stoletnaedine.model.Storage;
 
@@ -9,6 +8,17 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class ConsoleView {
+
+	public String askInput(final String inputName) {
+		System.out.format("Please input %s:", inputName);
+		final Scanner in = new Scanner(System.in);
+		try {
+			return in.nextLine();
+		} catch (final InputMismatchException e) {
+			System.out.println("Wrong input!");
+			return askInput(inputName);
+		}
+	}
 
     public int askCoordinate(final String coordinateName) {
 		System.out.format("Please input %s:", coordinateName);
@@ -19,6 +29,11 @@ public class ConsoleView {
 			System.out.println("Wrong input!");
 			return askCoordinate(coordinateName);
 		}
+	}
+
+	public void help(){
+		System.out.println("help — all comands");
+		System.out.println("size — number of cells horizontally and vertically");
 	}
 
 	public void show(final Session session) {
