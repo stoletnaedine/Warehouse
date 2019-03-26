@@ -2,6 +2,7 @@ package com.stoletnaedine.controller;
 
 import com.stoletnaedine.model.Article;
 import com.stoletnaedine.model.Storage;
+import com.stoletnaedine.model.exceptions.InvalidPointException;
 import com.stoletnaedine.model.exceptions.NoPlaceException;
 import com.stoletnaedine.model.exceptions.OccupiedException;
 
@@ -23,28 +24,20 @@ public class StorageController {
 
     }
 
-    public boolean checkCoorinate(Storage storage, Point point){
+    private boolean checkCoorinate(Storage storage, Point point){
         return point.x >= 0 && point.x <= storage.getX()
                 && point.y >= 0 && point.y <= storage.getY();
     }
 
+    public void setArticle(Storage storage, Point point, Article article)
+            throws InvalidPointException, OccupiedException{
+        if (!checkCoorinate(storage, point)) {
+            throw new InvalidPointException();
+        }
+        if (storage.getArticle(point) != null) {
+            throw new OccupiedException();
+        }
+        storage.setArticle(point, article);
+    }
 
-//    public void setArticle(final Storage storage,
-//                           final Point point,
-//                           final Article article) throws OccupiedException {
-//
-//        if (storage.getArticle(point) != null) throw new OccupiedException();
-//
-//        storage.setArticle(point, article);
-//
-//    }
-//
-//    public Article getArticle(Storage storage, Point point, Article article) {
-//
-//        if (storage.getArticle(point) != null) {
-//            return storage.getArticle(point);
-//        }
-//
-//        return null;
-//    }
 }
