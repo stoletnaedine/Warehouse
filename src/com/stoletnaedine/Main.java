@@ -15,8 +15,6 @@ public class Main {
 
         boolean quit = false;
 
-
-
             final ConsoleView cv = new ConsoleView();
 
             String nameOfWarehouse = cv.askInput("name of warehouse");
@@ -50,7 +48,5 @@ public class Main {
                     break;
             }
         }
-
-
     }
 }
