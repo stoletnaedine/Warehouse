@@ -47,14 +47,16 @@ public class ConsoleView {
 
 	public void show(final Session session) {
 
+        final Storage storage = session.getStorage();
+        System.out.println();
 		System.out.format("Warehouse name: %s\n", session.getName());
-		final Storage storage = session.getStorage();
+
 		for (int x = 1; x <= storage.getX(); x++) {
 
 			for (int i = 1; i <= storage.getY() * 4 + 1; i++)
 			    printSeparator();
-
             System.out.println();
+
 			printLine(storage, x);
 		}
 
