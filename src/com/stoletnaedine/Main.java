@@ -5,6 +5,7 @@ import com.stoletnaedine.model.Article;
 import com.stoletnaedine.model.Session;
 import com.stoletnaedine.model.Storage;
 import com.stoletnaedine.model.exceptions.InvalidPointException;
+import com.stoletnaedine.model.exceptions.OccupiedException;
 import com.stoletnaedine.view.ConsoleView;
 
 import java.awt.*;
@@ -13,7 +14,7 @@ import java.util.Scanner;
 
 public class Main {
 
-    public static void main(String[] args) throws InvalidPointException {
+    public static void main(String[] args) {
 
         boolean quit = false;
 
@@ -47,11 +48,11 @@ public class Main {
                     Article article = new Article(id, title);
 
                     System.out.println("Where to put?");
-                    int Y_Article = cv.askCoordinate("X");
-                    int X_Article = cv.askCoordinate("Y");
-                    if (sc.checkCoorinate(storage, new Point(X_Article, Y_Article)))
-                            storage.setArticle(new Point(X_Article, Y_Article), article);
-                    else new InvalidPointException();
+
+                    final Point point = cv.askPoint();
+                    try {
+                        sc.setArticle(storage, point, article);
+                    } catch (final InvalidPointException | OccupiedException e){}
                     break;
 
                 case "quit":

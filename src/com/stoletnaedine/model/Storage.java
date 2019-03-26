@@ -24,7 +24,7 @@ public class Storage {
 	}
 
 	public Article getArticle(final Point point) {
-		return storage[point.x][point.y];
+		return storage[point.x - 1][point.y - 1];
 	}
 
 	public void setArticle(Point point, Article article) {

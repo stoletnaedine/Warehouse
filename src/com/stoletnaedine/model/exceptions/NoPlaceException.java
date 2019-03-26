@@ -2,7 +2,7 @@ package com.stoletnaedine.model.exceptions;
 
 public class NoPlaceException extends AbstractException {
 
-    NoPlaceException(){
+    public NoPlaceException(){
         System.out.println("All cells are occupied!");
     }
 

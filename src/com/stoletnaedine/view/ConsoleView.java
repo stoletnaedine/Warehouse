@@ -20,6 +20,10 @@ public class ConsoleView {
 		}
 	}
 
+	public Point askPoint() {
+		return new Point(askCoordinate("X"), askCoordinate("Y"));
+	}
+
     public int askCoordinate(final String coordinateName) {
 		System.out.format("Please input %s:", coordinateName);
 		final Scanner in = new Scanner(System.in);
@@ -60,14 +64,13 @@ public class ConsoleView {
 		System.out.println("quit — close the app");
 	}
 
-
 	public void show(final Session session) {
 
 		System.out.format("Warehouse name: %s\n", session.getName());
 		final Storage storage = session.getStorage();
-		for (int x = 0; x < storage.getX(); x++) {
+		for (int x = 1; x <= storage.getX(); x++) {
 
-			for (int i = 0; i < storage.getY() * 4 + 1; i++)
+			for (int i = 1; i <= storage.getY() * 4 + 1; i++)
 			    printSeparator();
 
             System.out.println();
@@ -81,7 +84,7 @@ public class ConsoleView {
 
 	private void printLine(final Storage storage,
 						   final int x) {
-		for (int y = 0; y < storage.getY(); y++) {
+		for (int y = 1; y <= storage.getY(); y++) {
 			System.out.print("|");
 			System.out.print(" ");
 
