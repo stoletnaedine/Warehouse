@@ -33,7 +33,8 @@ public class ConsoleView {
 
 	public void help(){
 		System.out.println("help — all comands");
-		System.out.println("size — number of cells horizontally and vertically");
+		System.out.println("show - render warehouse");
+		System.out.println("quit - you know ;)");
 	}
 
 	public void show(final Session session) {
