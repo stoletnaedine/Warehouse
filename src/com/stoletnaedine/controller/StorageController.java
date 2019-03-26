@@ -25,6 +25,12 @@ public class StorageController {
 
     }
 
+    public boolean checkCoorinate(Storage storage, Point point){
+        return point.x >= 0 && point.x <= storage.getX()
+                && point.y >= 0 && point.y <= storage.getY();
+    }
+
+
     public void setArticle(final Storage storage,
                            final Point point,
                            final Article article) throws OccupiedException {
