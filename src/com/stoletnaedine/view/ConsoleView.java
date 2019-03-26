@@ -10,7 +10,7 @@ import java.util.Scanner;
 public class ConsoleView {
 
 	public Point askPoint() {
-		return new Point(askInt("X"), askInt("Y"));
+		return new Point(askInt("vertical"), askInt("horizont"));
 	}
 
     public int askInt(final String coordinateName) {
@@ -36,11 +36,13 @@ public class ConsoleView {
     }
 
 	public void help(){
+		System.out.println("~ ~ ~");
 		System.out.println("help — all comands");
         System.out.println("set - put the item in the box");
 		System.out.println("show - render warehouse");
 		System.out.println("random - fill N cells");
 		System.out.println("quit — close the app");
+		System.out.println("~ ~ ~");
 	}
 
 	public void show(final Session session) {
