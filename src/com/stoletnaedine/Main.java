@@ -11,13 +11,13 @@ public class Main {
 
     public static void main(String[] args) {
 
-        Storage storage = new Storage(3,6);
+        Storage storage = new Storage(7,3);
 
         Article a1 = new Article(12, "iPhone");
 
         Article a2 = new Article(15, "iPad");
 
-        storage.setArticle (new Point(1,4), a1);
+        storage.setArticle (new Point(6,3), a1);
 
         final Session session = new Session(storage, "My Backyard");
 

@@ -28,7 +28,7 @@ public class Storage {
 	}
 
 	public void setArticle(Point point, Article article) {
-		storage[point.x][point.y] = article;
+		storage[point.x - 1][point.y - 1] = article;
 	}
 
 	public int getX() {
