@@ -85,7 +85,7 @@ public class ConsoleView {
 			System.out.print("|");
 			System.out.print(" ");
 
-			System.out.print(storage.getArticle(new Point(x, y)) != null ? "X" : ".");
+			System.out.print(storage.getArticle(new Point(x, y)) != null ? "X" : " ");
 			System.out.print(" ");
 		}
         System.out.print("|");

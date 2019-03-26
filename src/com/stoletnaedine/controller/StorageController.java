@@ -19,9 +19,7 @@ public class StorageController {
                     counter += 1;
                 }
 
-        if (counter == storage.getSize()) {
-            //throw NoPlaceException;
-        }
+        if (counter == storage.getSize()) throw new NoPlaceException();
 
     }
 
@@ -31,24 +29,22 @@ public class StorageController {
     }
 
 
-    public void setArticle(final Storage storage,
-                           final Point point,
-                           final Article article) throws OccupiedException {
-
-        if (storage.getArticle(point) != null) {
-            //throw OccupiedException;
-        }
-
-        storage.setArticle(point, article);
-
-    }
-
-    public Article getArticle(Storage storage, Point point, Article article) {
-
-        if (storage.getArticle(point) != null) {
-            return storage.getArticle(point);
-        }
-
-        return null;
-    }
+//    public void setArticle(final Storage storage,
+//                           final Point point,
+//                           final Article article) throws OccupiedException {
+//
+//        if (storage.getArticle(point) != null) throw new OccupiedException();
+//
+//        storage.setArticle(point, article);
+//
+//    }
+//
+//    public Article getArticle(Storage storage, Point point, Article article) {
+//
+//        if (storage.getArticle(point) != null) {
+//            return storage.getArticle(point);
+//        }
+//
+//        return null;
+//    }
 }
