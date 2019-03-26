@@ -31,11 +31,35 @@ public class ConsoleView {
 		}
 	}
 
+    public int askIdArticle(final String coordinateName) {
+        System.out.format("Please input %s:", coordinateName);
+        final Scanner in = new Scanner(System.in);
+        try {
+            return in.nextInt();
+        } catch (final InputMismatchException e) {
+            System.out.println("Wrong input!");
+            return askCoordinate(coordinateName);
+        }
+    }
+
+    public String askTitleArticle(final String inputName) {
+        System.out.format("Please input %s:", inputName);
+        final Scanner in = new Scanner(System.in);
+        try {
+            return in.nextLine();
+        } catch (final InputMismatchException e) {
+            System.out.println("Wrong input!");
+            return askInput(inputName);
+        }
+    }
+
 	public void help(){
 		System.out.println("help — all comands");
+        System.out.println("set - put the item in the box");
 		System.out.println("show - render warehouse");
-		System.out.println("quit - you know ;)");
+		System.out.println("quit — close the app");
 	}
+
 
 	public void show(final Session session) {
 
