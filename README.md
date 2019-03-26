@@ -1,7 +1,7 @@
 # Warehouse
 CLI app concept for warehouses.
 
-![](https://vk.com/doc1950864_496567567?hash=be2940a6977bdf6bf7&dl=4c1f9f62f2e641df2a)
+![](https://psv4.userapi.com/c848336/u1950864/docs/d9/afba301078ae/screen_cast.gif?extra=XG6a-aaIhse4lxsvnQbWl16PONZCVxU8pxcQoVpsmjmS1DsIzUEIiedpbffJWhvd9XrqaCMu-emzfGMgBcJzp50ZlfD_iR6I5hr5tcnaX0IRjeSmhd9f9KuKYL570M8DABm_LsgC77KQ1xWX)
 
 TODO:
 1. add article — DONE
