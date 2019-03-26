@@ -65,15 +65,4 @@ public class StorageController {
         storage.setArticle(point, article);
     }
 
-    public static Article getArticle(final Storage storage, final Point point)
-            throws InvalidPointException, OccupiedException {
-        if (!checkCoorinate(storage, point)) {
-            throw new InvalidPointException();
-        }
-        if (storage.getArticle(point) != null) {
-            throw new OccupiedException();
-        }
-        return storage.getArticle(point);
-    }
-
 }
