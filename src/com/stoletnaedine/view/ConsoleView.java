@@ -85,10 +85,10 @@ public class ConsoleView {
 	}
 	
 	public void printListAllArticles(final Storage storage) {
-        Article[] list = StorageController.getListAllArticles(storage);
-        for (Article article : list
+        String[] list = StorageController.getListAllArticles(storage);
+        for (String article : list
              ) {
-            System.out.println(article.toString());
+            System.out.println(article);
         }
     }
 

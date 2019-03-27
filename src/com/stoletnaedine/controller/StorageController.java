@@ -42,13 +42,13 @@ public class StorageController {
         return counter;
     }
 
-    public static Article[] getListAllArticles(final Storage storage) {
-        Article[] list = new Article[counterOccupiedCells(storage)];
+    public static String[] getListAllArticles(final Storage storage) {
+        String[] list = new String[counterOccupiedCells(storage)];
         int position = 0;
         for (int i = 1; i <= storage.getX(); i++)
             for (int i2 = 1; i2 <= storage.getY(); i2++)
                 if (storage.getArticle(new Point(i, i2)) != null) {
-                    list[position] = storage.getArticle(new Point(i, i2));
+                    list[position] = storage.getArticle(new Point(i, i2)).getId() + " | " + storage.getArticle(new Point(i, i2)).getTitle();
                     position++;
                 }
         return list;
