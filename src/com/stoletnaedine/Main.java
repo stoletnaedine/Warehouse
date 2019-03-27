@@ -6,16 +6,15 @@ import com.stoletnaedine.model.Session;
 import com.stoletnaedine.model.Storage;
 import com.stoletnaedine.model.exceptions.InvalidPointException;
 import com.stoletnaedine.model.exceptions.NoPlaceException;
+import com.stoletnaedine.model.exceptions.NullSizeStorageException;
 import com.stoletnaedine.model.exceptions.OccupiedException;
 import com.stoletnaedine.view.ConsoleView;
 
 import java.awt.*;
-import java.util.InputMismatchException;
-import java.util.Scanner;
 
 public class Main {
 
-    public static void main(String[] args) throws OccupiedException, InvalidPointException, NoPlaceException {
+    public static void main(String[] args) throws OccupiedException, InvalidPointException, NoPlaceException, NullSizeStorageException {
 
         boolean quit = false;
 
@@ -23,14 +22,27 @@ public class Main {
 
         String nameOfWarehouse = cv.askString("name of warehouse").trim();
 
-        System.out.println("Ok, please input size of warehouse:");
-        int Y = cv.askInt("X");
-        int X = cv.askInt("Y");
+        int X = 0;
+        int Y = 0;
+
+        boolean validCoordinate = false;
+
+        while (!validCoordinate) {
+            System.out.println("Ok, please input size of warehouse:");
+            try {
+                Y = cv.askInt("X");
+                X = cv.askInt("Y");
+                validCoordinate = StorageController.checkNotNullSizeStorage(X, Y);
+            } catch (final NullSizeStorageException e) {
+            }
+        }
+
         Storage storage = new Storage(X, Y);
 
         Session session = new Session(storage, nameOfWarehouse);
 
         while (!quit) {
+
             String command = cv.askString("command or help").trim();
             switch (command) {
                 case "h":

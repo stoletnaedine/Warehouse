@@ -44,10 +44,11 @@ public class StorageController {
         return counter;
     }
 
-    public static void checkNotNullSizeStorage(final int X, final int Y) throws NullSizeStorageException {
-        if (X > 0 && Y > 0) {
+    public static boolean checkNotNullSizeStorage(final int X, final int Y) throws NullSizeStorageException {
+        if (X <= 0 && Y <= 0) {
             throw new NullSizeStorageException();
         }
+        return X > 0 && Y > 0;
     }
 
     public static ArrayList getArticleById(final Storage storage, final String searchString) {
