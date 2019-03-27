@@ -4,11 +4,11 @@ import com.stoletnaedine.model.Article;
 import com.stoletnaedine.model.Storage;
 import com.stoletnaedine.model.exceptions.InvalidPointException;
 import com.stoletnaedine.model.exceptions.NoPlaceException;
+import com.stoletnaedine.model.exceptions.NullSizeStorageException;
 import com.stoletnaedine.model.exceptions.OccupiedException;
 
 import java.awt.*;
 import java.util.ArrayList;
-import java.util.Collections;
 
 public class StorageController {
 
@@ -44,8 +44,10 @@ public class StorageController {
         return counter;
     }
 
-    private static boolean checkNoPlaceStorage(final Storage storage) {
-        return counterOccupiedCells(storage) == storage.getSize();
+    public static void checkNotNullSizeStorage(final int X, final int Y) throws NullSizeStorageException {
+        if (X > 0 && Y > 0) {
+            throw new NullSizeStorageException();
+        }
     }
 
     public static ArrayList getArticleById(final Storage storage, final String searchString) {
@@ -86,7 +88,7 @@ public class StorageController {
         if (storage.getArticle(point) != null) {
             throw new OccupiedException();
         }
-        if (checkNoPlaceStorage(storage)) {
+        if (counterOccupiedCells(storage) == storage.getSize()) {
             throw new NoPlaceException();
         }
         storage.setArticle(point, article);
