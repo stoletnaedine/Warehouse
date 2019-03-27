@@ -29,9 +29,13 @@ public class Main {
 
         while (!validCoordinate) {
             System.out.println("Ok, please input size of warehouse:");
+            try {
                 Y = cv.askInt("X");
                 X = cv.askInt("Y");
                 validCoordinate = StorageController.checkNotNullSizeStorage(X, Y);
+            } catch (final NullSizeStorageException e) {
+                System.out.println("- - - again? - - -");
+            }
         }
 
         Storage storage = new Storage(X, Y);
@@ -58,7 +62,9 @@ public class Main {
                     final Point point = cv.askPoint();
                     try {
                         StorageController.setArticle(storage, point, article);
-                    } catch (final InvalidPointException | OccupiedException e){}
+                    } catch (final InvalidPointException | OccupiedException e){
+                        System.out.println("- - - again? - - -");
+                    }
                     break;
 
                 case "p":
@@ -79,7 +85,7 @@ public class Main {
 
                 case "f":
                 case "find":
-                    String searchString = cv.askString("id or title");
+                    String searchString = cv.askString("cell ('X-Y'), id or title");
                     cv.searchArticleById(storage, searchString);
                     break;
 

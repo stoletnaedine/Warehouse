@@ -34,14 +34,14 @@ public class ConsoleView {
 		return new Point(askInt("vertical"), askInt("horizont"));
 	}
 
-    public int askInt(final String coordinateName) {
-        System.out.format("Please input %s:", coordinateName);
+    public int askInt(final String inputNum) {
+        System.out.format("Input %s:", inputNum);
         final Scanner in = new Scanner(System.in);
         try {
             return in.nextInt();
         } catch (final InputMismatchException e) {
             System.out.println("Wrong input!");
-            return askInt(coordinateName);
+            return askInt(inputNum);
         }
     }
 

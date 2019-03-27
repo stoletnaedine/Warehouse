@@ -45,10 +45,11 @@ public class StorageController {
     }
 
     public static boolean checkNotNullSizeStorage(final int X, final int Y) throws NullSizeStorageException {
-        if (X <= 0 && Y <= 0) {
+        if (X <= 0 || Y <= 0) {
             throw new NullSizeStorageException();
         }
-        return X > 0 && Y > 0;
+        else
+            return true;
     }
 
     public static ArrayList getArticleById(final Storage storage, final String searchString) {
