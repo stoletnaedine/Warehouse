@@ -6,7 +6,7 @@ CLI app concept for warehouses.
 TODO:
 1. add article — DONE
 2. add setter for article on cell (on CLI) — DONE
-3. add search article — DONE
+3. add search for any query — DONE
 4. add defragmentation articles
 5. refactoring controller — DONE
 6. add tests
@@ -16,3 +16,5 @@ TODO:
 future:
 1. use SQL database
 2. use web interface
+
+Well, i made like SQL on CLI :)
