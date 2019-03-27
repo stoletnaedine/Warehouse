@@ -26,11 +26,11 @@ public class StorageController {
     }
 
     private static Point getRandomPoint(final Storage storage){
-        return new Point(getRandomInt(storage.getX()), getRandomInt(storage.getY()));
+        return new Point(getRandomInt(1, storage.getX()), getRandomInt(1, storage.getY()));
     }
 
-    private static int getRandomInt(final int endNum){
-        return 1 + (int) (Math.random() * endNum);
+    private static int getRandomInt(final int begin, final int end){
+        return begin + (int) (Math.random() * end);
     }
 
     private static int counterOccupiedCells(final Storage storage) {
@@ -43,6 +43,9 @@ public class StorageController {
                 }
         return counter;
     }
+
+    private static String[] defaultArticles = new String[]{
+            "AliExpress Someshit", "BubbleGum", "Fireball", "Goggle Glass", "Gun", "MacBook 15", "Metallica Album", "Sea Sound", "Trezor", "Echpochmak", "iPhone X"};
 
     public static boolean checkNotNullSizeStorage(final int X, final int Y) throws NullSizeStorageException {
         if (X <= 0 || Y <= 0) {
@@ -66,7 +69,7 @@ public class StorageController {
     public static void randomFillCells(final Storage storage, int n) throws OccupiedException, InvalidPointException, NoPlaceException {
         if (n > storage.getSize()) n = storage.getSize();
         do {
-            setArticle(storage, getNullPoint(storage), new Article(getRandomInt(10000), "MacBook"));
+            setArticle(storage, getNullPoint(storage), new Article(getRandomInt(1, 10000), defaultArticles[getRandomInt(0, defaultArticles.length)]));
         } while (counterOccupiedCells(storage) < n);
     }
 

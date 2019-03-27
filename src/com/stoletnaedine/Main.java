@@ -34,7 +34,7 @@ public class Main {
                 X = cv.askInt("Y");
                 validCoordinate = StorageController.checkNotNullSizeStorage(X, Y);
             } catch (final NullSizeStorageException e) {
-                System.out.println("- - - again? - - -");
+                System.out.println("- - - Please, input again - - -");
             }
         }
 
@@ -63,7 +63,7 @@ public class Main {
                     try {
                         StorageController.setArticle(storage, point, article);
                     } catch (final InvalidPointException | OccupiedException e){
-                        System.out.println("- - - again? - - -");
+                        System.out.println("- - - Please, input again - - -");
                     }
                     break;
 

@@ -103,11 +103,13 @@ public class ConsoleView {
 
     public void searchArticleById(final Storage storage, final String searchString){
         ArrayList list = StorageController.getArticleById(storage, searchString);
-        if (!list.isEmpty())
+        if (!list.isEmpty()) {
+            System.out.println("cell | id | title");
             for (Object entry : list
-                 ) {
+            ) {
                 System.out.println(entry.toString());
             }
+        }
         else
             System.out.println("Sorry, entry is not found.");
     }
