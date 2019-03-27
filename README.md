@@ -11,7 +11,7 @@ TODO:
 5. refactoring controller — DONE
 6. add tests
 7. add random fill cells — DONE
-8. add command 'all' for show list of all articles with fields
+8. add command 'all' for show list of all articles with fields — DONE
 
 future:
 1. use SQL database
