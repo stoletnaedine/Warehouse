@@ -4,13 +4,13 @@ CLI app concept for warehouses.
 ![](https://im4.ezgif.com/tmp/ezgif-4-193b86edddad.gif)
 
 Commands:
-(h)elp — all comands
-(s)et - put the item in the cell
-(p)rint - render warehouse
-(r)andom - fill cells with random
-(l)ist — show all articles
-(f)ind — show article by id
-(q)uit — close the app
+- (h)elp — all comands
+- (s)et - put the item in the cell
+- (p)rint - render warehouse
+- (r)andom - fill cells with random
+- (l)ist — show all articles
+- (f)ind — show article by id
+- (q)uit — close the app
 
 TODO:
 1. add article — DONE
