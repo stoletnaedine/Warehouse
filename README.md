@@ -6,12 +6,12 @@ CLI app concept for warehouses.
 TODO:
 1. add article — DONE
 2. add setter for article on cell (on CLI) — DONE
-3. add search article 
+3. add search article — DONE
 4. add defragmentation articles
 5. refactoring controller — DONE
 6. add tests
 7. add random fill cells — DONE
-8. add command 'all' for show list of all articles with fields — DONE
+8. add command 'list' for show list of all articles with fields — DONE
 
 future:
 1. use SQL database
