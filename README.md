@@ -1,7 +1,16 @@
 # Warehouse
 CLI app concept for warehouses.
 
-![](https://psv4.userapi.com/c848336/u1950864/docs/d9/afba301078ae/screen_cast.gif?extra=XG6a-aaIhse4lxsvnQbWl16PONZCVxU8pxcQoVpsmjmS1DsIzUEIiedpbffJWhvd9XrqaCMu-emzfGMgBcJzp50ZlfD_iR6I5hr5tcnaX0IRjeSmhd9f9KuKYL570M8DABm_LsgC77KQ1xWX)
+![](https://im4.ezgif.com/tmp/ezgif-4-193b86edddad.gif)
+
+Commands:
+(h)elp — all comands
+(s)et - put the item in the cell
+(p)rint - render warehouse
+(r)andom - fill cells with random
+(l)ist — show all articles
+(f)ind — show article by id
+(q)uit — close the app
 
 TODO:
 1. add article — DONE
