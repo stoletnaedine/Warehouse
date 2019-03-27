@@ -21,7 +21,7 @@ public class Main {
 
         final ConsoleView cv = new ConsoleView();
 
-        String nameOfWarehouse = cv.askString("name of warehouse");
+        String nameOfWarehouse = cv.askString("name of warehouse").trim();
 
         System.out.println("Ok, please input size of warehouse:");
         int Y = cv.askInt("X");
@@ -31,21 +31,25 @@ public class Main {
         Session session = new Session(storage, nameOfWarehouse);
 
         while (!quit) {
-            String command = cv.askString("command or help");
+            String command = cv.askString("command or help").trim();
             switch (command) {
+                case "h":
                 case "help":
                     cv.help();
                     break;
 
-                case "show":
+                case "p":
+                case "print":
                     cv.show(session);
                     break;
 
+                case "r":
                 case "random":
-                    int n = cv.askInt("Number of cells?");
+                    int n = cv.askInt("number of cells");
                     StorageController.randomFillCells(storage, n);
                     break;
 
+                case "s":
                 case "set":
                     System.out.println("Please input article:");
                     int id = cv.askInt("Id?");
@@ -59,10 +63,18 @@ public class Main {
                     } catch (final InvalidPointException | OccupiedException e){}
                     break;
 
+                case "l":
                 case "list":
                     cv.printListAllArticles(storage);
                     break;
 
+                case "f":
+                case "find":
+                    String searchString = cv.askString("id or title");
+                    cv.searchArticleById(storage, searchString);
+                    break;
+
+                case "q":
                 case "quit":
                     quit = true;
                     break;
