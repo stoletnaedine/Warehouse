@@ -5,6 +5,7 @@ import com.stoletnaedine.model.Article;
 import com.stoletnaedine.model.Session;
 import com.stoletnaedine.model.Storage;
 import com.stoletnaedine.model.exceptions.InvalidPointException;
+import com.stoletnaedine.model.exceptions.NoPlaceException;
 import com.stoletnaedine.model.exceptions.OccupiedException;
 import com.stoletnaedine.view.ConsoleView;
 
@@ -12,11 +13,9 @@ import java.awt.*;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-import static com.stoletnaedine.controller.StorageController.setArticle;
-
 public class Main {
 
-    public static void main(String[] args) throws OccupiedException, InvalidPointException {
+    public static void main(String[] args) throws OccupiedException, InvalidPointException, NoPlaceException {
 
         boolean quit = false;
 
@@ -56,8 +55,12 @@ public class Main {
                     System.out.println("Where to put?");
                     final Point point = cv.askPoint();
                     try {
-                        setArticle(storage, point, article);
+                        StorageController.setArticle(storage, point, article);
                     } catch (final InvalidPointException | OccupiedException e){}
+                    break;
+
+                case "list":
+                    cv.printListAllArticles(storage);
                     break;
 
                 case "quit":

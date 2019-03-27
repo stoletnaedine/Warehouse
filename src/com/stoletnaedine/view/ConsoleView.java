@@ -1,5 +1,7 @@
 package com.stoletnaedine.view;
 
+import com.stoletnaedine.controller.StorageController;
+import com.stoletnaedine.model.Article;
 import com.stoletnaedine.model.Session;
 import com.stoletnaedine.model.Storage;
 
@@ -8,6 +10,23 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class ConsoleView {
+
+    private void printLine(final Storage storage,
+                           final int x) {
+        for (int y = 1; y <= storage.getY(); y++) {
+            System.out.print("|");
+            System.out.print(" ");
+
+            System.out.print(storage.getArticle(new Point(x, y)) != null ? "X" : " ");
+            System.out.print(" ");
+        }
+        System.out.print("|");
+        System.out.println();
+    }
+
+    private void printSeparator() {
+        System.out.print("-");
+    }
 
 	public Point askPoint() {
 		return new Point(askInt("vertical"), askInt("horizont"));
@@ -64,22 +83,13 @@ public class ConsoleView {
             printSeparator();
         System.out.println();
 	}
-
-	private void printLine(final Storage storage,
-						   final int x) {
-		for (int y = 1; y <= storage.getY(); y++) {
-			System.out.print("|");
-			System.out.print(" ");
-
-			System.out.print(storage.getArticle(new Point(x, y)) != null ? "X" : " ");
-			System.out.print(" ");
-		}
-        System.out.print("|");
-		System.out.println();
-	}
-
-	private void printSeparator() {
-		System.out.print("-");
-	}
+	
+	public void printListAllArticles(final Storage storage) {
+        Article[] list = StorageController.getListAllArticles(storage);
+        for (Article article : list
+             ) {
+            System.out.println(article.toString());
+        }
+    }
 
 }

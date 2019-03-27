@@ -10,21 +10,9 @@ import java.awt.*;
 
 public class StorageController {
 
-    private static boolean checkCoorinate(final Storage storage, final Point point){
+    private static boolean checkCoordinate(final Storage storage, final Point point){
         return point.x > 0 && point.x <= storage.getX()
                 && point.y > 0 && point.y <= storage.getY();
-    }
-
-    public static boolean checkNoPlaceStorage(final Storage storage) {
-        return counterOccupiedCells(storage) == storage.getSize();
-    }
-
-    public static void randomFillCells(final Storage storage, int n) throws OccupiedException, InvalidPointException {
-        if (n > storage.getSize())
-            n = storage.getSize();
-        do {
-            setArticle(storage, getNullPoint(storage), new Article());
-        } while (counterOccupiedCells(storage) < n);
     }
 
     private static Point getNullPoint(final Storage storage){
@@ -39,8 +27,8 @@ public class StorageController {
         return new Point(getRandomInt(storage.getX()), getRandomInt(storage.getY()));
     }
 
-    private static int getRandomInt(final int endCoordinate){
-        return 1 + (int) (Math.random() * endCoordinate);
+    private static int getRandomInt(final int endNum){
+        return 1 + (int) (Math.random() * endNum);
     }
 
     private static int counterOccupiedCells(final Storage storage) {
@@ -54,13 +42,39 @@ public class StorageController {
         return counter;
     }
 
+    public static Article[] getListAllArticles(final Storage storage) {
+        Article[] list = new Article[counterOccupiedCells(storage)];
+        int position = 0;
+        for (int i = 1; i <= storage.getX(); i++)
+            for (int i2 = 1; i2 <= storage.getY(); i2++)
+                if (storage.getArticle(new Point(i, i2)) != null) {
+                    list[position] = storage.getArticle(new Point(i, i2));
+                    position++;
+                }
+        return list;
+    }
+
+    public static boolean checkNoPlaceStorage(final Storage storage) {
+            return counterOccupiedCells(storage) == storage.getSize();
+    }
+
+    public static void randomFillCells(final Storage storage, int n) throws OccupiedException, InvalidPointException, NoPlaceException {
+        if (n > storage.getSize()) n = storage.getSize();
+        do {
+            setArticle(storage, getNullPoint(storage), new Article(getRandomInt(1000), "MacBook"));
+        } while (counterOccupiedCells(storage) < n);
+    }
+
     public static void setArticle(final Storage storage, final Point point, final Article article)
-            throws InvalidPointException, OccupiedException {
-        if (!checkCoorinate(storage, point)) {
+            throws InvalidPointException, OccupiedException, NoPlaceException {
+        if (!checkCoordinate(storage, point)) {
             throw new InvalidPointException();
         }
         if (storage.getArticle(point) != null) {
             throw new OccupiedException();
+        }
+        if (checkNoPlaceStorage(storage)) {
+            throw new NoPlaceException();
         }
         storage.setArticle(point, article);
     }
