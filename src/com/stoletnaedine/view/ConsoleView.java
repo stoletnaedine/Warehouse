@@ -5,6 +5,7 @@ import com.stoletnaedine.model.Article;
 import com.stoletnaedine.model.Session;
 import com.stoletnaedine.model.Storage;
 
+import javax.sound.midi.Soundbank;
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.InputMismatchException;
@@ -89,11 +90,15 @@ public class ConsoleView {
 	
 	public void printListAllArticles(final Storage storage) {
         String[] list = StorageController.getListAllArticles(storage);
-        System.out.println("cell | id | title");
-        for (String article : list
-             ) {
-            System.out.println(article);
+        if (list.length != 0) {
+            System.out.println("cell | id | title");
+            for (String article : list
+            ) {
+                System.out.println(article);
+            }
         }
+        else
+            System.out.println("Sorry, the list is empty.");
     }
 
     public void searchArticleById(final Storage storage, final String searchString){
