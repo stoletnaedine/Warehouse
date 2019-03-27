@@ -58,13 +58,13 @@ public class ConsoleView {
 
 	public void help(){
 		System.out.println("~ ~ ~");
-		System.out.println("'help' (or 'h') — all comands");
-        System.out.println("'set' (or 's') - put the item in the cell");
-		System.out.println("'print' (or 'p') - render warehouse");
-		System.out.println("'random' (or 'r') - fill cells with random");
-        System.out.println("'list' (or 'l') — show all articles");
-        System.out.println("'find' (or 'f') — show article by id");
-		System.out.println("'quit' (or 'q') — close the app");
+		System.out.println("(h)elp — all comands");
+        System.out.println("(s)et - put the item in the cell");
+		System.out.println("(p)rint - render warehouse");
+		System.out.println("(r)andom - fill cells with random");
+        System.out.println("(l)ist — show all articles");
+        System.out.println("(f)ind — show article by id");
+		System.out.println("(q)uit — close the app");
 		System.out.println("~ ~ ~");
 	}
 
