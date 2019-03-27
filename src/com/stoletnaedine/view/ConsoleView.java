@@ -6,6 +6,7 @@ import com.stoletnaedine.model.Session;
 import com.stoletnaedine.model.Storage;
 
 import java.awt.*;
+import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -56,11 +57,13 @@ public class ConsoleView {
 
 	public void help(){
 		System.out.println("~ ~ ~");
-		System.out.println("help — all comands");
-        System.out.println("set - put the item in the box");
-		System.out.println("show - render warehouse");
-		System.out.println("random - fill N cells");
-		System.out.println("quit — close the app");
+		System.out.println("'help' (or 'h') — all comands");
+        System.out.println("'set' (or 's') - put the item in the cell");
+		System.out.println("'print' (or 'p') - render warehouse");
+		System.out.println("'random' (or 'r') - fill cells with random");
+        System.out.println("'list' (or 'l') — show all articles");
+        System.out.println("'find' (or 'f') — show article by id");
+		System.out.println("'quit' (or 'q') — close the app");
 		System.out.println("~ ~ ~");
 	}
 
@@ -86,10 +89,22 @@ public class ConsoleView {
 	
 	public void printListAllArticles(final Storage storage) {
         String[] list = StorageController.getListAllArticles(storage);
+        System.out.println("cell | id | title");
         for (String article : list
              ) {
             System.out.println(article);
         }
+    }
+
+    public void searchArticleById(final Storage storage, final String searchString){
+        ArrayList list = StorageController.getArticleById(storage, searchString);
+        if (!list.isEmpty())
+            for (Object entry : list
+                 ) {
+                System.out.println(entry.toString());
+            }
+        else
+            System.out.println("Sorry, entry is not found.");
     }
 
 }

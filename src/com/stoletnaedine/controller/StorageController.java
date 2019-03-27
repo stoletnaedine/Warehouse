@@ -7,6 +7,8 @@ import com.stoletnaedine.model.exceptions.NoPlaceException;
 import com.stoletnaedine.model.exceptions.OccupiedException;
 
 import java.awt.*;
+import java.util.ArrayList;
+import java.util.Collections;
 
 public class StorageController {
 
@@ -42,27 +44,38 @@ public class StorageController {
         return counter;
     }
 
+    private static boolean checkNoPlaceStorage(final Storage storage) {
+        return counterOccupiedCells(storage) == storage.getSize();
+    }
+
+    public static ArrayList getArticleById(final Storage storage, final String searchString) {
+        String[] list = getListAllArticles(storage);
+        ArrayList result = new ArrayList();
+        for (String entry : list
+             ) {
+            if (entry.toLowerCase().contains(searchString))
+                result.add(entry);
+        }
+        return result;
+    }
+
+    public static void randomFillCells(final Storage storage, int n) throws OccupiedException, InvalidPointException, NoPlaceException {
+        if (n > storage.getSize()) n = storage.getSize();
+        do {
+            setArticle(storage, getNullPoint(storage), new Article(getRandomInt(10000), "MacBook"));
+        } while (counterOccupiedCells(storage) < n);
+    }
+
     public static String[] getListAllArticles(final Storage storage) {
         String[] list = new String[counterOccupiedCells(storage)];
         int position = 0;
         for (int i = 1; i <= storage.getX(); i++)
             for (int i2 = 1; i2 <= storage.getY(); i2++)
                 if (storage.getArticle(new Point(i, i2)) != null) {
-                    list[position] = storage.getArticle(new Point(i, i2)).getId() + " | " + storage.getArticle(new Point(i, i2)).getTitle();
+                    list[position] = i + "-" + i2 + " | " + storage.getArticle(new Point(i, i2)).getId() + " | " + storage.getArticle(new Point(i, i2)).getTitle();
                     position++;
                 }
         return list;
-    }
-
-    public static boolean checkNoPlaceStorage(final Storage storage) {
-            return counterOccupiedCells(storage) == storage.getSize();
-    }
-
-    public static void randomFillCells(final Storage storage, int n) throws OccupiedException, InvalidPointException, NoPlaceException {
-        if (n > storage.getSize()) n = storage.getSize();
-        do {
-            setArticle(storage, getNullPoint(storage), new Article(getRandomInt(1000), "MacBook"));
-        } while (counterOccupiedCells(storage) < n);
     }
 
     public static void setArticle(final Storage storage, final Point point, final Article article)
