@@ -35,7 +35,7 @@ public class ConsoleView {
 	}
 
     public int askInt(final String inputNum) {
-        System.out.format("Input %s:", inputNum);
+        System.out.format("Input %s: ", inputNum);
         final Scanner in = new Scanner(System.in);
         try {
             return in.nextInt();
@@ -46,7 +46,7 @@ public class ConsoleView {
     }
 
     public String askString(final String inputName) {
-        System.out.format("Please input %s:", inputName);
+        System.out.format("Please input %s: ", inputName);
         final Scanner in = new Scanner(System.in);
         try {
             return in.nextLine();

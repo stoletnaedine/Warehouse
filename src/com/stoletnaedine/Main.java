@@ -14,7 +14,7 @@ import java.awt.*;
 
 public class Main {
 
-    public static void main(String[] args) throws OccupiedException, InvalidPointException, NoPlaceException, NullSizeStorageException {
+    public static void main(String[] args) throws OccupiedException, InvalidPointException, NoPlaceException {
 
         boolean quit = false;
 
@@ -44,7 +44,7 @@ public class Main {
 
         while (!quit) {
 
-            String command = cv.askString("command or help").trim();
+            String command = cv.askString("command or (h)elp").trim();
             switch (command) {
                 case "h":
                 case "help":

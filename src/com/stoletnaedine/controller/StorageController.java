@@ -45,7 +45,7 @@ public class StorageController {
     }
 
     private static String[] defaultArticles = new String[]{
-            "AliExpress Someshit", "BubbleGum", "Fireball", "Goggle Glass", "Gun", "MacBook 15", "Metallica Album", "Sea Sound", "Trezor", "Echpochmak", "iPhone X"};
+            "AliExpress Someshit", "BubbleGum", "Fireball", "Google Glass", "Gun", "MacBook 15", "Metallica Album", "Sea Sound", "Trezor", "Echpochmak", "iPhone X"};
 
     public static boolean checkNotNullSizeStorage(final int X, final int Y) throws NullSizeStorageException {
         if (X <= 0 || Y <= 0) {
