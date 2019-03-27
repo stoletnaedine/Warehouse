@@ -29,12 +29,9 @@ public class Main {
 
         while (!validCoordinate) {
             System.out.println("Ok, please input size of warehouse:");
-            try {
                 Y = cv.askInt("X");
                 X = cv.askInt("Y");
                 validCoordinate = StorageController.checkNotNullSizeStorage(X, Y);
-            } catch (final NullSizeStorageException e) {
-            }
         }
 
         Storage storage = new Storage(X, Y);
@@ -50,17 +47,6 @@ public class Main {
                     cv.help();
                     break;
 
-                case "p":
-                case "print":
-                    cv.show(session);
-                    break;
-
-                case "r":
-                case "random":
-                    int n = cv.askInt("number of cells");
-                    StorageController.randomFillCells(storage, n);
-                    break;
-
                 case "s":
                 case "set":
                     System.out.println("Please input article:");
@@ -73,6 +59,17 @@ public class Main {
                     try {
                         StorageController.setArticle(storage, point, article);
                     } catch (final InvalidPointException | OccupiedException e){}
+                    break;
+
+                case "p":
+                case "print":
+                    cv.show(session);
+                    break;
+
+                case "r":
+                case "random":
+                    int n = cv.askInt("number of cells");
+                    StorageController.randomFillCells(storage, n);
                     break;
 
                 case "l":
