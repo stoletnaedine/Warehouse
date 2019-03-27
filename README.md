@@ -21,6 +21,7 @@ TODO:
 6. add tests
 7. add random fill cells — DONE
 8. add command 'list' for show list of all articles with fields — DONE
+9. replace all interface from Main on ConvoleView
 
 future:
 1. use SQL database
