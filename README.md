@@ -1,7 +1,7 @@
 # Warehouse
 CLI app concept for warehouses.
 
-![](https://im4.ezgif.com/tmp/ezgif-4-193b86edddad.gif)
+![](https://vk.com/doc2000021225_496719143?hash=95d0c8e56d2736b1cb&dl=ed8879d216b4b7f927&wnd=1&module=public)
 
 Commands:
 - (h)elp — all comands
