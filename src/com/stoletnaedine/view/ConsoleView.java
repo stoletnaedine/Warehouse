@@ -102,7 +102,7 @@ public class ConsoleView {
     }
 
     public void searchArticleById(final Storage storage, final String searchString){
-        ArrayList list = StorageController.getArticleById(storage, searchString);
+        ArrayList list = StorageController.getArticleBySearch(storage, searchString);
         if (!list.isEmpty()) {
             System.out.println("cell | id | title");
             for (Object entry : list

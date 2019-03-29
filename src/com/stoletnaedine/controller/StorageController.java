@@ -55,12 +55,12 @@ public class StorageController {
             return true;
     }
 
-    public static ArrayList getArticleById(final Storage storage, final String searchString) {
+    public static ArrayList getArticleBySearch(final Storage storage, final String search) {
         String[] list = getListAllArticles(storage);
         ArrayList result = new ArrayList();
         for (String entry : list
              ) {
-            if (entry.toLowerCase().contains(searchString))
+            if (entry.toLowerCase().contains(search))
                 result.add(entry);
         }
         return result;
