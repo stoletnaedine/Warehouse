@@ -17,6 +17,13 @@ public class StorageController {
                 && point.y > 0 && point.y <= storage.getY();
     }
 
+    private static Point getRandomPoint(final Storage storage){
+        return new Point(getRandomInt(1, storage.getX()), getRandomInt(1, storage.getY()));
+    }
+
+    private static String[] defaultArticles = new String[]{
+            "AliExpress Someshit", "BubbleGum", "Fireball", "Google Glass", "Gun", "MacBook 15", "Metallica Album", "Sea Sound", "Trezor", "Echpochmak", "iPhone X"};
+
     private static Point getNullPoint(final Storage storage){
         Point result = getRandomPoint(storage);
         while (storage.getArticle(result) != null) {
@@ -25,11 +32,7 @@ public class StorageController {
         return result;
     }
 
-    private static Point getRandomPoint(final Storage storage){
-        return new Point(getRandomInt(1, storage.getX()), getRandomInt(1, storage.getY()));
-    }
-
-    private static int counterOccupiedCells(final Storage storage) {
+    static int counterOccupiedCells(final Storage storage) {
         int counter = 0;
 
         for (int i = 1; i <= storage.getX(); i++)
@@ -39,9 +42,6 @@ public class StorageController {
                 }
         return counter;
     }
-
-    private static String[] defaultArticles = new String[]{
-            "AliExpress Someshit", "BubbleGum", "Fireball", "Google Glass", "Gun", "MacBook 15", "Metallica Album", "Sea Sound", "Trezor", "Echpochmak", "iPhone X"};
 
     public static void checkNotNullSizeStorage(final int x, final int y) throws NullSizeStorageException {
         if (x <= 0 || y <= 0) {
