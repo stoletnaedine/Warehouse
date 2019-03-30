@@ -10,7 +10,7 @@ import com.stoletnaedine.view.ConsoleView;
 import java.awt.*;
 
 import static com.stoletnaedine.controller.StorageController.*;
-import static com.stoletnaedine.controller.StorageController.checkNotNullSizeStorage;
+import static com.stoletnaedine.controller.StorageController.checkNullSizeStorage;
 
 public class Main {
 
@@ -30,7 +30,7 @@ public class Main {
             try {
                 X = cv.askInt("X");
                 Y = cv.askInt("Y");
-                checkNotNullSizeStorage(X, Y);
+                checkNullSizeStorage(X, Y);
                } catch (final NullSizeStorageException e) {
                    cv.again();
                }

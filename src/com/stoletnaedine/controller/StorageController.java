@@ -43,7 +43,7 @@ public class StorageController {
         return counter;
     }
 
-    public static void checkNotNullSizeStorage(final int x, final int y) throws NullSizeStorageException {
+    public static void checkNullSizeStorage(final int x, final int y) throws NullSizeStorageException {
         if (x <= 0 || y <= 0) {
             throw new NullSizeStorageException();
         }
