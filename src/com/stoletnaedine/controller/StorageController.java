@@ -55,7 +55,7 @@ public class StorageController {
 
     public static ArrayList getArticleBySearch(final Storage storage, final String search) {
         String[] list = getListAllArticles(storage);
-        ArrayList result = new ArrayList();
+        ArrayList<String> result = new ArrayList<>();
         for (String entry : list
              ) {
             if (entry.toLowerCase().contains(search))
