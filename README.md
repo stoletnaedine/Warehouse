@@ -18,10 +18,10 @@ TODO:
 3. add search for any query — DONE
 4. add defragmentation articles
 5. refactoring controller — DONE
-6. add tests
+6. add tests — on process
 7. add random fill cells — DONE
 8. add command 'list' for show list of all articles with fields — DONE
-9. replace all interface from Main on ConvoleView
+9. replace all interface from Main on ConsoleView — on process
 
 future:
 1. use SQL database
