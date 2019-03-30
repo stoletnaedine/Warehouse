@@ -56,5 +56,11 @@ public class StorageControllerTest {
 
     @Test
     public void setArticle() {
+        Storage storage = new Storage(4,5);
+        Point point = new Point(1,3);
+        Article current = new Article(6391, "Fireball");
+        storage.setArticle(point, current);
+        Article expected = storage.getArticle(new Point(1, 3));
+        assert current == expected;
     }
 }
