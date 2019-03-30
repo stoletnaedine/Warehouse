@@ -12,8 +12,8 @@ import java.util.Scanner;
 public class ConsoleView {
 
     private void printLine(final Storage storage,
-                           final int x) {
-        for (int y = 1; y <= storage.getY(); y++) {
+                           final int y) {
+        for (int x = 1; x <= storage.getX(); x++) {
             System.out.print("|");
             System.out.print(" ");
 
@@ -29,7 +29,7 @@ public class ConsoleView {
     }
 
 	public Point askPoint() {
-		return new Point(askInt("vertical"), askInt("horizon"));
+		return new Point(askInt("X"), askInt("Y"));
 	}
 
     public int askInt(final String inputNum) {
@@ -76,16 +76,17 @@ public class ConsoleView {
         System.out.println();
 		System.out.format("Warehouse name: %s\n", session.getName());
 
-		for (int x = 1; x <= storage.getX(); x++) {
+		for (int y = 1; y <= storage.getY(); y++) {
 
-			for (int i = 1; i <= storage.getY() * 4 + 1; i++)
-			    printSeparator();
+			for (int i = 1; i <= storage.getX() * 4 + 1; i++) {
+                printSeparator();
+            }
             System.out.println();
 
-			printLine(storage, x);
+			printLine(storage, y);
 		}
 
-        for (int i = 0; i < storage.getY() * 4 + 1; i++)
+        for (int i = 0; i < storage.getX() * 4 + 1; i++)
             printSeparator();
         System.out.println();
 	}

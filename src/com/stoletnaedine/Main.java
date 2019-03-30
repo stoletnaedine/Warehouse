@@ -27,8 +27,8 @@ public class Main {
         while (!(X > 0 && Y > 0)) {
             System.out.println("Ok, please input size of warehouse:");
             try {
-                Y = cv.askInt("X");
-                X = cv.askInt("Y");
+                X = cv.askInt("X");
+                Y = cv.askInt("Y");
                 checkNotNullSizeStorage(X, Y);
                } catch (final NullSizeStorageException e) {
                    cv.again();
