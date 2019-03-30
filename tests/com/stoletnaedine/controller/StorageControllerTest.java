@@ -4,12 +4,10 @@ import com.stoletnaedine.model.Article;
 import com.stoletnaedine.model.Storage;
 import com.stoletnaedine.model.exceptions.InvalidPointException;
 import com.stoletnaedine.model.exceptions.NoPlaceException;
-import com.stoletnaedine.model.exceptions.NullSizeStorageException;
 import com.stoletnaedine.model.exceptions.OccupiedException;
 import org.junit.Test;
 
 import java.awt.*;
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
 
