@@ -47,12 +47,10 @@ public class StorageController {
     private static String[] defaultArticles = new String[]{
             "AliExpress Someshit", "BubbleGum", "Fireball", "Google Glass", "Gun", "MacBook 15", "Metallica Album", "Sea Sound", "Trezor", "Echpochmak", "iPhone X"};
 
-    public static boolean checkNotNullSizeStorage(final int X, final int Y) throws NullSizeStorageException {
-        if (X <= 0 || Y <= 0) {
+    public static void checkNotNullSizeStorage(final int x, final int y) throws NullSizeStorageException {
+        if (x <= 0 || y <= 0) {
             throw new NullSizeStorageException();
         }
-        else
-            return true;
     }
 
     public static ArrayList getArticleBySearch(final Storage storage, final String search) {

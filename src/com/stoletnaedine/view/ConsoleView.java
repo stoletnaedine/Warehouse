@@ -29,7 +29,7 @@ public class ConsoleView {
     }
 
 	public Point askPoint() {
-		return new Point(askInt("vertical"), askInt("horizont"));
+		return new Point(askInt("vertical"), askInt("horizon"));
 	}
 
     public int askInt(final String inputNum) {

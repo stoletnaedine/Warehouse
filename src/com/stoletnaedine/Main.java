@@ -9,6 +9,8 @@ import com.stoletnaedine.view.ConsoleView;
 
 import java.awt.*;
 
+import static com.stoletnaedine.controller.StorageController.checkNotNullSizeStorage;
+
 public class Main {
 
     public static void main(String[] args) throws OccupiedException, InvalidPointException, NoPlaceException, NullSizeStorageException {
@@ -22,17 +24,15 @@ public class Main {
         int X = 0;
         int Y = 0;
 
-        boolean validCoordinate = false;
-
-        while (!validCoordinate) {
+        while (!(X > 0 && Y > 0)) {
             System.out.println("Ok, please input size of warehouse:");
             try {
                 Y = cv.askInt("X");
                 X = cv.askInt("Y");
-                validCoordinate = StorageController.checkNotNullSizeStorage(X, Y);
-            } catch (final NullSizeStorageException e) {
-               cv.again();
-            }
+                checkNotNullSizeStorage(X, Y);
+               } catch (final NullSizeStorageException e) {
+                   cv.again();
+               }
         }
 
         Storage storage = new Storage(X, Y);
