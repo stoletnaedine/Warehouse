@@ -18,6 +18,8 @@ public class StorageControllerTest {
 
     @Test
     public void getRandomInt() {
+        int a = StorageController.getRandomInt(1,1000);
+        assert (a > 0 && a < 1000);
     }
 
     @Test
