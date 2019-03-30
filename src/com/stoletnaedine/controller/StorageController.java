@@ -98,5 +98,4 @@ public class StorageController {
         }
         storage.setArticle(point, article);
     }
-
 }

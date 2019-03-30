@@ -1,11 +1,9 @@
 package com.stoletnaedine.view;
 
 import com.stoletnaedine.controller.StorageController;
-import com.stoletnaedine.model.Article;
 import com.stoletnaedine.model.Session;
 import com.stoletnaedine.model.Storage;
 
-import javax.sound.midi.Soundbank;
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.InputMismatchException;
@@ -68,6 +66,10 @@ public class ConsoleView {
 		System.out.println("~ ~ ~");
 	}
 
+	public void again(){
+        System.out.println("- - - Please, input again - - -");
+    }
+
 	public void show(final Session session) {
 
         final Storage storage = session.getStorage();
@@ -113,5 +115,4 @@ public class ConsoleView {
         else
             System.out.println("Sorry, entry is not found.");
     }
-
 }

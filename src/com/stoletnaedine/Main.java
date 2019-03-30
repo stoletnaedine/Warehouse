@@ -4,17 +4,14 @@ import com.stoletnaedine.controller.StorageController;
 import com.stoletnaedine.model.Article;
 import com.stoletnaedine.model.Session;
 import com.stoletnaedine.model.Storage;
-import com.stoletnaedine.model.exceptions.InvalidPointException;
-import com.stoletnaedine.model.exceptions.NoPlaceException;
-import com.stoletnaedine.model.exceptions.NullSizeStorageException;
-import com.stoletnaedine.model.exceptions.OccupiedException;
+import com.stoletnaedine.model.exceptions.*;
 import com.stoletnaedine.view.ConsoleView;
 
 import java.awt.*;
 
 public class Main {
 
-    public static void main(String[] args) throws OccupiedException, InvalidPointException, NoPlaceException {
+    public static void main(String[] args) throws OccupiedException, InvalidPointException, NoPlaceException, NullSizeStorageException {
 
         boolean quit = false;
 
@@ -34,7 +31,7 @@ public class Main {
                 X = cv.askInt("Y");
                 validCoordinate = StorageController.checkNotNullSizeStorage(X, Y);
             } catch (final NullSizeStorageException e) {
-                System.out.println("- - - Please, input again - - -");
+               cv.again();
             }
         }
 
@@ -63,7 +60,7 @@ public class Main {
                     try {
                         StorageController.setArticle(storage, point, article);
                     } catch (final InvalidPointException | OccupiedException e){
-                        System.out.println("- - - Please, input again - - -");
+                        cv.again();
                     }
                     break;
 
@@ -96,7 +93,6 @@ public class Main {
 
                 default:
                     System.out.println("ERROR: incorrect command!");
-                    break;
             }
         }
     }

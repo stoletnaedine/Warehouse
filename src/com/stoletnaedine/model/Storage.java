@@ -36,5 +36,4 @@ public class Storage {
 	public int getY() {
 		return sizeY;
 	}
-
 }
