@@ -52,7 +52,7 @@ public class Main {
                 case "s":
                 case "set":
                     int id = getRandomInt(1, 10000);
-                    String title = cv.askString("title of article:");
+                    String title = cv.askString("name of product");
                     Article article = new Article(id, title);
 
                     System.out.println("Where to put?");
