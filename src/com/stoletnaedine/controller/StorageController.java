@@ -29,10 +29,6 @@ public class StorageController {
         return new Point(getRandomInt(1, storage.getX()), getRandomInt(1, storage.getY()));
     }
 
-    private static int getRandomInt(final int begin, final int end){
-        return begin + (int) (Math.random() * end);
-    }
-
     private static int counterOccupiedCells(final Storage storage) {
         int counter = 0;
 
@@ -51,6 +47,10 @@ public class StorageController {
         if (x <= 0 || y <= 0) {
             throw new NullSizeStorageException();
         }
+    }
+
+    public static int getRandomInt(final int begin, final int end){
+        return begin + (int) (Math.random() * end);
     }
 
     public static ArrayList getArticleBySearch(final Storage storage, final String search) {

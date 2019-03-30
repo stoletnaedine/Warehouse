@@ -9,6 +9,7 @@ import com.stoletnaedine.view.ConsoleView;
 
 import java.awt.*;
 
+import static com.stoletnaedine.controller.StorageController.*;
 import static com.stoletnaedine.controller.StorageController.checkNotNullSizeStorage;
 
 public class Main {
@@ -50,15 +51,14 @@ public class Main {
 
                 case "s":
                 case "set":
-                    System.out.println("Please input article:");
-                    int id = cv.askInt("Id?");
-                    String title = cv.askString("Title?");
+                    int id = getRandomInt(1, 10000);
+                    String title = cv.askString("title of article:");
                     Article article = new Article(id, title);
 
                     System.out.println("Where to put?");
                     final Point point = cv.askPoint();
                     try {
-                        StorageController.setArticle(storage, point, article);
+                        setArticle(storage, point, article);
                     } catch (final InvalidPointException | OccupiedException e){
                         cv.again();
                     }
@@ -72,7 +72,7 @@ public class Main {
                 case "r":
                 case "random":
                     int n = cv.askInt("number of cells");
-                    StorageController.randomFillCells(storage, n);
+                    randomFillCells(storage, n);
                     break;
 
                 case "l":
